@@ -1,0 +1,33 @@
+project_name: subcall
+builds:
+  - binary: subcall
+    main: main.go
+    goos:
+      - windows
+      - linux
+      - darwin
+    goarch:
+      - amd64
+      - x86
+
+checksum:
+  name_template: "{{ .ProjectName }}_checksums.txt"
+
+snapshot:
+  name_template: SNAPSHOT-{{.Commit}}
+
+nfpm:
+    vendor: Sascha Andres
+    homepage: https://livingit.de
+    maintainer: Sascha Andres <sascha.andres@outlook.com>
+    description: subcall generic sub process caller
+    license: Apache 2.0
+    formats:
+      - deb
+    bindir: /usr/local/bin
+
+release:
+  draft: true
+  github:
+      owner: sascha-andres
+      name: subcall
